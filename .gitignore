@@ -1,0 +1,7 @@
+output/*.conf
+baselines/*.conf
+Fleet_config_*/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
