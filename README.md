@@ -12,7 +12,7 @@ Generate per-AMR SCALANCE switch configs from one policy file + fleet inventory.
 
 | Folder | Purpose |
 |--------|---------|
-| `baselines/` | One `.conf` per physical switch (exports, not committed by default) |
+| `baselines/` | One `.conf` per physical switch (committed to repo) |
 | `inventory.csv` | MAC + Switch / IPC / PLC per AMR (auto-generated) |
 | `IP.csv` | Reference IP plan (optional) |
 | `policy_history/` | One archived policy `.conf` per fleet push (in repo) |
