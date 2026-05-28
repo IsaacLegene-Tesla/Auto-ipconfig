@@ -1,5 +1,6 @@
 @echo off
 cd /d "%~dp0"
+title AMR Fleet Config Viewer
 
 set PY=
 if exist "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" (
@@ -9,11 +10,11 @@ if exist "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" (
 )
 
 if "%PY%"=="" (
-  echo Python not found. Install Python 3.12+ and run: pip install flask
+  echo Python not found. Install Python 3.12+.
   pause
   exit /b 1
 )
 
-"%PY%" -m pip install flask -q
-"%PY%" generator\fleet_app.py
-pause
+"%PY%" -m pip install flask pywebview -q
+"%PY%" viewer\launch_desktop.py
+if errorlevel 1 pause

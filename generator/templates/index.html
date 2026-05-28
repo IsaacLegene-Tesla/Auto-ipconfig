@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMR Fleet Config Builder</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header class="top-banner">
+    <div class="banner-inner">
+      <h1 class="banner-title">AMR Fleet Config Builder</h1>
+      <div class="banner-logo-center">
+        <img
+          id="teslaLogo"
+          class="banner-logo banner-logo--symbol"
+          src="/static/tesla%20symbol.png"
+          alt="Tesla"
+        />
+      </div>
+      <div class="banner-stat">
+        <div class="label">AMRs in inventory</div>
+        <div class="value" id="statAmr">—</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <div class="grid">
+      <section class="card card-fleet">
+        <div class="card-head">
+          <h2>Fleet build</h2>
+          <span class="badge badge-deploy">Deploy</span>
+        </div>
+        <p class="card-lead">Upload the updated policy <code>.conf</code>. Output → <strong>Downloads</strong> · archive → <code>policy_history/</code></p>
+
+        <form id="fleetForm">
+          <div class="field">
+            <label>Policy file</label>
+            <div class="file-zone">
+              <input type="file" name="config" accept=".conf" />
+              <div class="zone-title">Drop .conf here or click to browse</div>
+              <div class="zone-hint">Site-wide policy export</div>
+              <div class="file-name"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Or file path</label>
+            <input type="text" name="config_path" placeholder="C:\Users\...\updated.conf" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="fleetBtn">
+            <span class="spinner"></span>
+            <span class="btn-label">Build fleet folder</span>
+          </button>
+        </form>
+        <div id="fleetStatus" class="alert"></div>
+      </section>
+
+      <section class="card card-baselines">
+        <div class="card-head">
+          <h2>Baselines</h2>
+        </div>
+        <p class="card-lead">Add a baseline <code>.conf</code> file for any AMR that should be changed. This adds that AMR to the fleet so it receives updates from <strong>Fleet build</strong>.</p>
+
+        <div class="chips-grid" id="baselineChips">Loading…</div>
+
+        <form id="baselineForm">
+          <div class="field">
+            <label>AMR number</label>
+            <input type="number" name="amr_number" min="1" step="1" required placeholder="51" />
+          </div>
+          <div class="field">
+            <label>Switch export</label>
+            <div class="file-zone">
+              <input type="file" name="baseline" accept=".conf" />
+              <div class="zone-title">Drop baseline .conf here</div>
+              <div class="zone-hint">From Siemens web UI export</div>
+              <div class="file-name"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Or file path</label>
+            <input type="text" name="baseline_path" placeholder="C:\Users\...\export.conf" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="baselineBtn">
+            <span class="spinner"></span>
+            <span class="btn-label">Add to baselines</span>
+          </button>
+        </form>
+        <div id="baselineStatus" class="alert"></div>
+      </section>
+    </div>
+
+    <footer>
+      AMR Fleet Config · Close the window to quit
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
